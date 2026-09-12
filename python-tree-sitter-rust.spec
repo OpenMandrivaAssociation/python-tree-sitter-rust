@@ -6,6 +6,8 @@ License:	MIT
 Group:		Development/Python
 URL:		https://pypi.org/project/tree-sitter-rust
 Source0:	https://files.pythonhosted.org/packages/b7/87/75cbd22b927267d310f76cca1ab3c1d9d41035dfa3eb9cc95f96ee199440/tree_sitter_rust-0.24.2.tar.gz
+# PyPI sdist omits src/tree_sitter/*.h
+Source1:	tree-sitter-c-headers.tar.xz
 BuildRequires:	python
 BuildRequires:	pkgconfig(python)
 BuildRequires:	python%{pyver}dist(pip)
@@ -19,6 +21,7 @@ Aider's grep-ast repo-map.
 
 %prep
 %autosetup -n tree_sitter_rust-0.24.2
+tar -C src -xf %{SOURCE1}
 
 %build
 
